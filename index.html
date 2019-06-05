@@ -182,6 +182,14 @@
 </template>
 <script>
   var fireballSize = 22;
+
+  /**
+   * Функция вычисляет скорость шара.
+   * @param {boolean} left направление ветра
+   * @return {number} 5 если left = true
+   * @return {number} 2 если left = false
+   */
+
   var getFireballSpeed = function(left) {
     if (left) {
       return 5;
@@ -191,12 +199,31 @@
   };
   var wizardSpeed = 3;
   var wizardWidth = 70;
+
+  /**
+   * Функция вычисляет высоту мага
+   * @param {number} 1.337 коефф для определения ширины
+   * @param {number} wizardWidth ширина мага
+   * @return {number} высота мага
+   */
   var getWizardHeight = function() {
     return 1.337 * wizardWidth;
   };
+
+  /**
+   * Функция вычисляет расположение мага по горизонтали
+   * @param {number} width
+   * @return {number} расположение мага
+   */
   var getWizardX = function(width) {
     return width * 1 / 2;
   };
+
+  /**
+   * Функция вычисляет расположение мага по вертикали
+   * @param {number} height
+   * @return {number} расположение мага
+   */
 
   var getWizardY = function(height) {
     return height * 1 / 3;
