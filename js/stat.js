@@ -1,3 +1,4 @@
+'use strict';
 
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
@@ -16,7 +17,7 @@ var BAR_GAP = 50;
  * @param {number} y
  * @param {string}  color
  */
-var renderCloud = function(ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
@@ -29,7 +30,7 @@ var renderCloud = function(ctx, x, y, color) {
  * @param {string} font
  * @param {string} color
  */
-var renderText = function(ctx, text, x, y, font, color) {
+var renderText = function (ctx, text, x, y, font, color) {
   ctx.fillStyle = color;
   ctx.font = font;
   ctx.fillText(text, x, y);
@@ -41,9 +42,9 @@ var renderText = function(ctx, text, x, y, font, color) {
  * @return {number} максимальный элемент
  */
 
-var getMaxElement = function(arr) {
+var getMaxElement = function (arr) {
   var maxElement = arr[0];
-  for (i = 1; i < arr.length; i++){
+  for (var i = 1; i < arr.length; i++) {
     if (arr[i] > maxElement) {
       maxElement = arr[i];
     }
@@ -58,16 +59,15 @@ var getMaxElement = function(arr) {
  * @param {array} times
  */
 
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
   renderText(ctx, 'Ура, вы победили!', 130, 40, '16px PT Mono', '#000');
-  renderText(ctx, 'Список результатов:', 130, 60);
+  renderText(ctx, 'Список результатов:', 130, 60, '16px PT Mono', '#000');
 
 
   var maxTime = getMaxElement(times);
-
 
 
   for (var i = 0; i < names.length; i++) {
@@ -79,7 +79,7 @@ window.renderStatistics = function(ctx, names, times) {
     if (names[i] === 'Вы') {
       var barColor = 'rgba(255, 0, 0, 1)';
     } else {
-      var getRandomSaturation = function(min, max) {
+      var getRandomSaturation = function (min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
       };
       barColor = 'hsl(' + 240 + ',' + getRandomSaturation(0, 101) + '%,' + 50 + '%)';
