@@ -5,10 +5,10 @@ setup.classList.remove('hidden');
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
-var firstNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-var lastNames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-var wizardsColor = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var eyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
+var FIRST_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+var LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+var WIZARDS_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var firstNamesRandom;
 var lastNamesRandom;
@@ -20,11 +20,11 @@ var wizards = [];
 
 var generateWizardsObject = function () {
   for (var i = 0; i < 4; i++) {
-    firstNamesRandom = Math.floor(Math.random() * firstNames.length);
-    lastNamesRandom = Math.floor(Math.random() * lastNames.length);
-    namesGenerator = firstNames[firstNamesRandom] + ' ' + lastNames[lastNamesRandom];
-    colorRandom = wizardsColor[Math.floor(Math.random() * wizardsColor.length)];
-    eyesColorRandom = eyesColor[Math.floor(Math.random() * eyesColor.length)];
+    firstNamesRandom = Math.floor(Math.random() * FIRST_NAMES.length);
+    lastNamesRandom = Math.floor(Math.random() * LAST_NAMES.length);
+    namesGenerator = FIRST_NAMES[firstNamesRandom] + ' ' + LAST_NAMES[lastNamesRandom];
+    colorRandom = WIZARDS_COLOR[Math.floor(Math.random() * WIZARDS_COLOR.length)];
+    eyesColorRandom = EYES_COLOR[Math.floor(Math.random() * EYES_COLOR.length)];
     wizards[i] = {
       name: namesGenerator,
       coatColor: colorRandom,
