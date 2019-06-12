@@ -51,4 +51,3 @@ for (var i = 0; i < wizards.length; i++) {
 }
 similarListElement.appendChild(fragment);
 document.querySelector('.setup-similar').classList.remove('hidden');
-console.log(similarListElement);
