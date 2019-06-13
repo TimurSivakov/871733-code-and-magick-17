@@ -18,26 +18,36 @@ var eyesColorRandom;
 
 
 /**
- *Функция создает массив объектов
- * @return {Array}
+ * Функция создает массив волшебников, сгенерированных случайным образом
+ * @param {string} firstName Имя волшебника
+ * @param {string} lastName Фамилия волшебника
+ * @param {string} coatColor цвет плаща волшебника
+ * @param {string} eyesColor цвет глаз волшебника
+ * @return {Array} массив из волшебников.
  */
-var generateWizardsArray = function () {
+var generateWizardsArray = function (firstName, lastName, coatColor, eyesColor) {
   var wizards = [];
   for (var i = 0; i < 4; i++) {
-    firstNamesRandom = Math.floor(Math.random() * FIRST_NAMES.length);
-    lastNamesRandom = Math.floor(Math.random() * LAST_NAMES.length);
-    namesGenerator = FIRST_NAMES[firstNamesRandom] + ' ' + LAST_NAMES[lastNamesRandom];
-    colorRandom = WIZARDS_COLOR[Math.floor(Math.random() * WIZARDS_COLOR.length)];
-    eyesColorRandom = EYES_COLOR[Math.floor(Math.random() * EYES_COLOR.length)];
-    wizards.push({
+    firstNamesRandom = Math.floor(Math.random() * firstName.length);
+    lastNamesRandom = Math.floor(Math.random() * lastName.length);
+    namesGenerator = firstName[firstNamesRandom] + ' ' + lastName[lastNamesRandom];
+    colorRandom = coatColor[Math.floor(Math.random() * coatColor.length)];
+    eyesColorRandom = eyesColor[Math.floor(Math.random() * eyesColor.length)];
+    var wizard = {
       name: namesGenerator,
       coatColor: colorRandom,
       eyesColor: eyesColorRandom
-    });
+    };
+    wizards.push(wizard);
   }
   return wizards;
 };
 
+/**
+ * Создает новый узел с дополнительными атрибутами
+ * @param {array} wizard
+ * @return {Node}
+ */
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
   wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
@@ -49,10 +59,9 @@ var renderWizard = function (wizard) {
 
 
 var fragment = document.createDocumentFragment();
+var wizards = generateWizardsArray(FIRST_NAMES, LAST_NAMES, WIZARDS_COLOR, EYES_COLOR);
 for (var i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
 }
 similarListElement.appendChild(fragment);
 document.querySelector('.setup-similar').classList.remove('hidden');
-
-generateWizardsArray();
