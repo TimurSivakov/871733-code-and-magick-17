@@ -19,11 +19,19 @@ var eyesColorRandom;
 
 /**
  * Функция создает массив волшебников, сгенерированных случайным образом
- * @param {Array} firstName Имя волшебника
- * @param {Array} lastName Фамилия волшебника
- * @param {Array} coatColor цвет плаща волшебника
- * @param {Array} eyesColor цвет глаз волшебника
- * @return {Array} массив из волшебников.
+ * @param {{
+ *   length: number
+ * }[]} firstName Имя волшебника
+ * @param {{
+ *   length: number
+ * }[]} lastName Фамилия волшебника
+ * @param {{
+ *   length: number
+ * }[]} coatColor цвет плаща волшебника
+ * @param {{
+ *   length: number
+ * }[]} eyesColor цвет глаз волшебника
+ * @return {string[]} массив из волшебников.
  */
 var generateWizardsArray = function (firstName, lastName, coatColor, eyesColor) {
   var wizards = [];
@@ -44,8 +52,13 @@ var generateWizardsArray = function (firstName, lastName, coatColor, eyesColor) 
 };
 
 /**
- * Создает новый узел с дополнительными атрибутами
- * @param {array} wizard
+ * Преобразует массив магов в массив узлов
+ * @param {{
+ *   coatColor: string,
+ *   eyesColor: string,
+ *   name: string
+ * }} wizard
+ *
  * @return {Node}
  */
 var renderWizard = function (wizard) {
