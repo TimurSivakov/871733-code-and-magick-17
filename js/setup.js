@@ -19,10 +19,10 @@ var eyesColorRandom;
 
 /**
  * Функция создает массив волшебников, сгенерированных случайным образом
- * @param {string} firstName Имя волшебника
- * @param {string} lastName Фамилия волшебника
- * @param {string} coatColor цвет плаща волшебника
- * @param {string} eyesColor цвет глаз волшебника
+ * @param {Array} firstName Имя волшебника
+ * @param {Array} lastName Фамилия волшебника
+ * @param {Array} coatColor цвет плаща волшебника
+ * @param {Array} eyesColor цвет глаз волшебника
  * @return {Array} массив из волшебников.
  */
 var generateWizardsArray = function (firstName, lastName, coatColor, eyesColor) {
