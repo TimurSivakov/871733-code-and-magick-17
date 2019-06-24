@@ -20,16 +20,20 @@ var setupFunction = function (className) {
 };
 
 /**
+ * @typedef {{
+ *   coatColor: string,
+ *   eyesColor: string,
+ *   name: string
+ * }} Wizard
+ */
+
+/**
  * Функция создает массив волшебников, сгенерированных случайным образом
  * @param {string[]} firstNames массив имен волшебника
  * @param {string[]} lastNames массив фамилий волшебника
  * @param {string[]} coatColors массив цветов плаща волшебника
  * @param {string[]} eyesColors массив цветов глаз волшебника
- * @return {{
- *   name: string,
- *   coatColor: string,
- *   eyesColor: string
- * }[]} массив из волшебников.
+ * @return {Wizard[]} массив из волшебников.
  */
 var generateWizardsArray = function (firstNames, lastNames, coatColors, eyesColors) {
   /**
@@ -54,12 +58,7 @@ var generateWizardsArray = function (firstNames, lastNames, coatColors, eyesColo
 
 /**
  * Создает новый узел с дополнительными атрибутами
- * @param {{
- *   coatColor: string,
- *   eyesColor: string,
- *   name: string
- * }} wizard
- *
+ * @param {Wizard} wizard
  * @return {Node}
  */
 var renderWizard = function (wizard) {
