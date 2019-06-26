@@ -112,9 +112,9 @@ var closePopup = function () {
 };
 /**
  * Функция меняет цвет у выбранного параметра волшебника в окне настроек персонажа
- * @param {Object} wizardItem Элемент, у которого будет меняться цвет
+ * @param {HTMLElement|Element} wizardItem Элемент, у которого будет меняться цвет
  * @param {string[]} color массив цветов
- * @param {Object} input скрытое поле ввода
+ * @param {HTMLElement|Element} input скрытое поле ввода
  */
 var changeSetupWizardsColor = function (wizardItem, color, input) {
   wizardItem.style.fill = getRandomArrayElement(color);
