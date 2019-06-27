@@ -19,7 +19,6 @@ var WIZARDS_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var WIZARDS_ARRAY_LENGTH = 4;
-// var SETUP = '.setup';
 var SETUP_SIMILAR = '.setup-similar';
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
@@ -35,11 +34,11 @@ var setupFunction = function (className) {
 
 /**
  * Функция возвращает рандомный элемент из массива характеристик волшебника
- * @param {string[]} wizardsParameters
+ * @param {*[]} parameters
  * @return {string} возвращает элемент массива
  */
-var getRandomArrayElement = function (wizardsParameters) {
-  return wizardsParameters[Math.floor(Math.random() * wizardsParameters.length)];
+var getRandomArrayElement = function (parameters) {
+  return parameters[Math.floor(Math.random() * parameters.length)];
 };
 
 /**
@@ -115,10 +114,12 @@ var closePopup = function () {
  * @param {HTMLElement|Element} wizardItem Элемент, у которого будет меняться цвет
  * @param {string[]} color массив цветов
  * @param {HTMLElement|Element} input скрытое поле ввода
+ * @param {string} inputProperty свойство, через которое меняется цвет
  */
-var changeSetupWizardsColor = function (wizardItem, color, input) {
-  wizardItem.style.fill = getRandomArrayElement(color);
-  input.value = wizardItem.style.fill;
+var changeSetupWizardsColor = function (wizardItem, color, input, inputProperty) {
+  var wizardItemColor = getRandomArrayElement(color);
+  wizardItem['style'][inputProperty] = wizardItemColor;
+  input.value = wizardItemColor;
 };
 
 setupUserName.addEventListener('focus', function () {
@@ -150,16 +151,15 @@ setupClose.addEventListener('keydown', function (evt) {
 });
 
 setupWizardCoat.addEventListener('click', function () {
-  changeSetupWizardsColor(setupWizardCoat, WIZARDS_COLORS, wizardCoatInput);
+  changeSetupWizardsColor(setupWizardCoat, WIZARDS_COLORS, wizardCoatInput, 'fill');
 });
 
 setupWizardEyes.addEventListener('click', function () {
-  changeSetupWizardsColor(setupWizardEyes, EYES_COLORS, wizardEyesInput);
+  changeSetupWizardsColor(setupWizardEyes, EYES_COLORS, wizardEyesInput, 'fill');
 });
 
 setupFireball.addEventListener('click', function () {
-  setupFireball.style.backgroundColor = getRandomArrayElement(FIREBALL_COLORS);
-  fireballInput.value = setupFireball.style.backgroundColor;
+  changeSetupWizardsColor(setupFireball, FIREBALL_COLORS, fireballInput, 'backgroundColor');
 });
 
 var fragment = document.createDocumentFragment();
@@ -168,6 +168,5 @@ for (var i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
 }
 similarListElement.appendChild(fragment);
-// setupFunction(SETUP);
 setupFunction(SETUP_SIMILAR);
 
